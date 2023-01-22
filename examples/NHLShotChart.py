@@ -103,8 +103,8 @@ def generate_shot_chart_for_game(gameId):
                         print(i["about"]["periodType"])
                         if i["about"]["periodType"] != 'SHOOTOUT':
                             home_sog += 1
-                            home_goals += 1
 
+                        home_goals += 1
                         empty_net = result["emptyNet"]
                         if empty_net != False:
                             continue
@@ -137,7 +137,8 @@ def generate_shot_chart_for_game(gameId):
                         print(i["about"]["periodType"])
                         if i["about"]["periodType"] != 'SHOOTOUT':
                             away_sog += 1
-                            away_goals += 1
+
+                        away_goals += 1
                         empty_net = result["emptyNet"]
                         if empty_net != False:
                             continue
