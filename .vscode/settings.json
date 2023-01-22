@@ -1,6 +1,15 @@
 {
   "cSpell.words": [
+    "figsize",
+    "linescore",
+    "markersize",
+    "matplotlib",
+    "mplcursors",
+    "pyplot",
     "simplejson",
-    "venv"
+    "suptitle",
+    "venv",
+    "xlim",
+    "ylim"
   ]
 }
