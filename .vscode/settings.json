@@ -6,6 +6,7 @@
     "matplotlib",
     "mplcursors",
     "pyplot",
+    "savefig",
     "simplejson",
     "suptitle",
     "venv",
