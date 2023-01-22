@@ -26,8 +26,8 @@ NHL_API_DATE_TIME_FORMAT_STRING = "%Y-%m-%dT%H:%M:%SZ"  # '2023-01-20T03:00:00Z'
 NHL_SEASON = 20222023
 NHL_TEAM_ID = 55  # Seattle Kraken
 
-NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA
-# NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA
+# NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA
+NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA
 
 # Date and time
 START_DATE = "2023-01-19"
@@ -99,11 +99,18 @@ def generate_shot_chart_for_game(gameId):
                     y = y
                 print(i)
                 if event == "Goal":
-                    home_goals += 1
-                    empty_net = result["emptyNet"]
-                    if empty_net != False:
-                        continue
-                    else:
+                    try:
+                        print(i["about"]["periodType"])
+                        if i["about"]["periodType"] != 'SHOOTOUT':
+                            home_sog += 1
+                            home_goals += 1
+
+                        empty_net = result["emptyNet"]
+                        if empty_net != False:
+                            continue
+                        else:
+                            plt.plot(x, y, 'd', color="#4bad53", markersize=20)
+                    except:
                         plt.plot(x, y, 'd', color="#4bad53", markersize=20)
                 elif event == "Shot":
                     home_sog += 1
@@ -126,11 +133,17 @@ def generate_shot_chart_for_game(gameId):
                     y = y
                 print(i)
                 if event == "Goal":
-                    away_goals += 1
-                    empty_net = result["emptyNet"]
-                    if empty_net != False:
-                        continue
-                    else:
+                    try:
+                        print(i["about"]["periodType"])
+                        if i["about"]["periodType"] != 'SHOOTOUT':
+                            away_sog += 1
+                            away_goals += 1
+                        empty_net = result["emptyNet"]
+                        if empty_net != False:
+                            continue
+                        else:
+                            plt.plot(x, y, 'd', color="#4bad53", markersize=20)
+                    except:
                         plt.plot(x, y, 'd', color="#4bad53", markersize=20)
                 elif event == "Shot":
                     away_sog += 1
@@ -148,7 +161,7 @@ def generate_shot_chart_for_game(gameId):
         " vs. " + home_team + " (" + str(home_goals) + ")" + "\n"
     title_line2 = datetime + "\n"
     title_line3 = currentPeriodTimeRemaining + "/" + currentPeriodOrdinal + "\n\n"
-    title_line4 = away_team + ": " + str(away_sog) + " SOG (" + str(away_shot_attempts) + " Total Shot Attempts " + ")\n" + \
+    title_line4 = away_team + ": " + str(away_sog) + " SOG (" + str(away_shot_attempts) + " Total Shot Attempts)\n" + \
         home_team + ": " + str(home_sog) + " SOG (" + \
         str(home_shot_attempts) + " Total Shot Attempts)"
     title = title_line1 + title_line2 + title_line3 + title_line4
