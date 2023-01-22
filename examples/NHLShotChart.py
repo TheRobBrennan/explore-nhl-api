@@ -41,6 +41,7 @@ START_DATE = "2023-01-19"
 END_DATE = "2023-01-21"
 LOCAL_DATE_TIME_FORMAT_STRING = "YYYY-MM-DD h:mma"  # '2023-01-19 7:00pm'
 OUTPUT_SEPARATOR = "\n\n*****\n\n"
+OUTPUT_SHOT_CHART_DIRECTORY_AND_FILENAME_PREFIX = './images/shot-chart-'
 
 
 # Utility method to either log or pretty print JSON data
@@ -54,7 +55,37 @@ def printJSON(data, indent=0):
 
 # Generate a shot chart for a specific game ID from the NHL API
 def generate_shot_chart_for_game(gameId):
+    # --------------------------------------------------------------------------------------------------------
     # TODO - Write a function that parses content and returns values for generating a shot chart
+    # --------------------------------------------------------------------------------------------------------
+    # What might this look like - starting from a single NHL game ID?
+    #
+    # - Parse game information and plays
+    #
+    #   - Return objects to plot on our graph
+    #       - Goal - plt.plot(x, y, 'd', color="#4bad53", markersize=20)
+    #       - Shot on goal - plt.plot(x, y, 'o', color="#f0a911", markersize=15)
+    #       - Shot attempt (missed or blocked) - plt.plot(x, y, 'x', color="#000000", markersize=15)
+    #
+    #   - Return details to display on our chart which may include
+    #       - Away team
+    #       - Away shot attempts
+    #       - Away shots on goal
+    #       - Away goals
+    #       - Home team
+    #       - Home shot attempts
+    #       - Home shots on goal
+    #       - Home goals
+    #       - Local date and time for the game start
+    #       - Current period time remaining
+    #       - Current period ordinal (3rd, OT, SO)
+    #
+    # - What might our chart drawing function look like?
+    #   - Define the initial scatter plot
+    #   - Define title(s) for the chart
+    #   - Process the objects for plotting and draw them on our graph
+    #   - Overlay the NHL rink
+    # --------------------------------------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------------------------------------
     # Load data for a specific game ID from the NHL API
@@ -212,7 +243,6 @@ def generate_shot_chart_for_game(gameId):
         # --------------------------------------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------------------------------------
-
     # Use a predefined NHL rink with markings to overlay our scatter plot
     rink = NHLRink()
     ax = rink.draw()
@@ -238,8 +268,8 @@ def generate_shot_chart_for_game(gameId):
     plt.title(title)
 
     # OPTIONAL: Save our plot to a PNG file
-    plt.savefig('./images/shot-chart-' + str(gameId) + '-' + gameStartLocalDateTime.replace(' ', '_') + '-' +
-                away_team + '-vs-' + home_team + '.png')
+    plt.savefig(OUTPUT_SHOT_CHART_DIRECTORY_AND_FILENAME_PREFIX + str(gameId) + '-' + gameStartLocalDateTime.replace(' ', '_') + '-' +
+                away_team + '-vs-' + home_team + '.png')  # Example - ./images/shot-chart-2022020711-2023-01-17_6:00pm-SEA-vs-EDM.png
 
     # Display chart
     plt.show()
