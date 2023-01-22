@@ -155,6 +155,11 @@ def generate_shot_chart_for_game(gameId):
 
     # Add title and display chart
     plt.title(title)
+
+    # OPTIONAL: Save our plot to a PNG file
+    plt.savefig('./charts/shot-chart-' + str(gameId) + '-' + datetime.replace(' ', '_') + '-' +
+                away_team + '-vs-' + home_team + '.png')
+
     plt.show()
 
 
