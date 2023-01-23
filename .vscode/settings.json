@@ -1,8 +1,10 @@
 {
   "cSpell.words": [
+    "datapoint",
     "figsize",
     "linescore",
     "markersize",
+    "markertype",
     "matplotlib",
     "mplcursors",
     "pyplot",
