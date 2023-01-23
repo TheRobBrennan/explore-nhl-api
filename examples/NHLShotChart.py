@@ -129,9 +129,18 @@ def generate_shot_chart_for_game(gameId):
     rink = NHLRink()
     ax = rink.draw()
 
+    # Log
+    eventLog = "-- BEGIN GAME --"
+
     # Plot our elements on the chart
     elements = data['game']['charts']['shotChart']['data']
     for e in elements:
+        eventDescription = e['event_description']
+        eventDetails = e['event_details']
+        eventLog = "Period {0} - {1} ({2} remaining) -> {4} {3}".format(
+            eventDetails['period'], eventDetails['periodTime'], eventDetails['periodTimeRemaining'], eventDescription, e['team'])
+        print(eventLog)
+
         plt.plot(e['x_calculated_shot_chart'], e['y_calculated_shot_chart'], e['markertype'], color=e['color'],
                  markersize=int(e['markersize']))
 
@@ -310,6 +319,7 @@ def parse_game_details(gameId):
                     if empty_net != False:
                         continue
                     else:
+                        datapoint['event_description'] = eventDescription
                         datapoint['x'] = x
                         datapoint['y'] = y
                         datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
@@ -318,11 +328,13 @@ def parse_game_details(gameId):
                         datapoint['color'] = GOAL_COLOR
                         datapoint['markersize'] = GOAL_MARKER_SIZE
                         datapoint['event_details'] = eventDetails
+                        datapoint['team'] = team
 
                         if SHOW_GOALS:
                             chartElements.append(datapoint)
 
                 except:
+                    datapoint['event_description'] = eventDescription
                     datapoint['x'] = x
                     datapoint['y'] = y
                     datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
@@ -331,6 +343,7 @@ def parse_game_details(gameId):
                     datapoint['color'] = GOAL_COLOR
                     datapoint['markersize'] = GOAL_MARKER_SIZE
                     datapoint['event_details'] = eventDetails
+                    datapoint['team'] = team
 
                     if SHOW_GOALS:
                         chartElements.append(datapoint)
@@ -339,6 +352,7 @@ def parse_game_details(gameId):
                 isShotAttempt = True
                 isShotOnGoal = True
 
+                datapoint['event_description'] = eventDescription
                 datapoint['x'] = x
                 datapoint['y'] = y
                 datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
@@ -347,6 +361,7 @@ def parse_game_details(gameId):
                 datapoint['color'] = SHOT_ON_GOAL_COLOR
                 datapoint['markersize'] = SHOT_ON_GOAL_MARKER_SIZE
                 datapoint['event_details'] = eventDetails
+                datapoint['team'] = team
 
                 if SHOW_SHOTS_ON_GOAL:
                     chartElements.append(datapoint)
@@ -355,6 +370,7 @@ def parse_game_details(gameId):
                 isShotAttempt = True
                 isShotOnGoal = False
 
+                datapoint['event_description'] = eventDescription
                 datapoint['x'] = x
                 datapoint['y'] = y
                 datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
@@ -363,6 +379,7 @@ def parse_game_details(gameId):
                 datapoint['color'] = SHOT_ATTEMPT_COLOR
                 datapoint['markersize'] = SHOT_ATTEMPT_MARKER_SIZE
                 datapoint['event_details'] = eventDetails
+                datapoint['team'] = team
 
                 if SHOW_SHOT_ATTEMPTS:
                     chartElements.append(datapoint)
