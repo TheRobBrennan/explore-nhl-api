@@ -21,6 +21,7 @@ from matplotlib.patches import PathPatch
 SHOW_GOALS = True
 SHOW_SHOTS_ON_GOAL = True
 SHOW_SHOT_ATTEMPTS = True
+SHOW_SHOT_ATTEMPTS_ANNOTATION = False
 
 # Charts and graphs
 GOAL_COLOR = "#4bad53"
@@ -28,12 +29,12 @@ GOAL_MARKER_SIZE = 20
 GOAL_MARKER_TYPE = '*'
 
 SHOT_ON_GOAL_COLOR = "#f0a911"
-SHOT_ON_GOAL_MARKER_SIZE = 10
+SHOT_ON_GOAL_MARKER_SIZE = 7
 SHOT_ON_GOAL_MARKER_TYPE = 'o'
 
 SHOT_ATTEMPT_COLOR = "#000000"
-SHOT_ATTEMPT_MARKER_SIZE = 10
-SHOT_ATTEMPT_MARKER_TYPE = '^'
+SHOT_ATTEMPT_MARKER_SIZE = 7
+SHOT_ATTEMPT_MARKER_TYPE = 'x'
 
 OUTPUT_SEPARATOR = "\n\n*****\n\n"
 OUTPUT_SHOT_CHART_DIRECTORY_AND_FILENAME_PREFIX = './images/shot-chart-'
@@ -55,10 +56,10 @@ NHL_TEAM_ID_SEATTLE_KRAKEN = 55
 # NHL_GAME_ID = 2022020711  # 2023.01.17 => SEA @ EDM - https://www.nhl.com/gamecenter/sea-vs-edm/2023/01/17/2022020711#game=2022020711,game_state=final,lock_state=final,game_tab=stats
 # Expected 31 SOG for SEA / 33 SOG for EDM; actual data from the NHL API shows 31 SOG for SEA / 34 SOG for EDM - EDM wins 5-2
 
-NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA - https://www.nhl.com/gamecenter/njd-vs-sea/2023/01/19/2022020728/recap/stats#game=2022020728,game_state=final,lock_state=final,game_tab=stats
+# NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA - https://www.nhl.com/gamecenter/njd-vs-sea/2023/01/19/2022020728/recap/stats#game=2022020728,game_state=final,lock_state=final,game_tab=stats
 # Expected 30 SOG for NJD / 40 SOG for SEA - SEA wins 4-3 in OT
 
-# NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA - https://www.nhl.com/gamecenter/col-vs-sea/2023/01/21/2022020743/recap/stats#game=2022020743,game_state=final,lock_state=final,game_tab=stats
+NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA - https://www.nhl.com/gamecenter/col-vs-sea/2023/01/21/2022020743/recap/stats#game=2022020743,game_state=final,lock_state=final,game_tab=stats
 # Expected 27 SOG for COL / 27 SOG for SEA - COL wins 2-1 in SO
 
 
@@ -143,6 +144,10 @@ def generate_shot_chart_for_game(gameId):
 
         plt.plot(e['x_calculated_shot_chart'], e['y_calculated_shot_chart'], e['markertype'], color=e['color'],
                  markersize=int(e['markersize']))
+
+        if SHOW_SHOT_ATTEMPTS_ANNOTATION:
+            plt.text(e['x_calculated_shot_chart']-1.2, e['y_calculated_shot_chart']-1, e['shot_attempts'], horizontalalignment='left',
+                     size='medium', color='black', weight='normal')
 
     # Add title
     plt.title(title)
@@ -330,6 +335,11 @@ def parse_game_details(gameId):
                         datapoint['event_details'] = eventDetails
                         datapoint['team'] = team
 
+                        if isHomeTeam:
+                            datapoint['shot_attempts'] = home_shot_attempts
+                        else:
+                            datapoint['shot_attempts'] = away_shot_attempts
+
                         if SHOW_GOALS:
                             chartElements.append(datapoint)
 
@@ -344,6 +354,11 @@ def parse_game_details(gameId):
                     datapoint['markersize'] = GOAL_MARKER_SIZE
                     datapoint['event_details'] = eventDetails
                     datapoint['team'] = team
+
+                    if isHomeTeam:
+                        datapoint['shot_attempts'] = home_shot_attempts
+                    else:
+                        datapoint['shot_attempts'] = away_shot_attempts
 
                     if SHOW_GOALS:
                         chartElements.append(datapoint)
@@ -363,6 +378,11 @@ def parse_game_details(gameId):
                 datapoint['event_details'] = eventDetails
                 datapoint['team'] = team
 
+                if isHomeTeam:
+                    datapoint['shot_attempts'] = home_shot_attempts
+                else:
+                    datapoint['shot_attempts'] = away_shot_attempts
+
                 if SHOW_SHOTS_ON_GOAL:
                     chartElements.append(datapoint)
             else:
@@ -380,6 +400,11 @@ def parse_game_details(gameId):
                 datapoint['markersize'] = SHOT_ATTEMPT_MARKER_SIZE
                 datapoint['event_details'] = eventDetails
                 datapoint['team'] = team
+
+                if isHomeTeam:
+                    datapoint['shot_attempts'] = home_shot_attempts
+                else:
+                    datapoint['shot_attempts'] = away_shot_attempts
 
                 if SHOW_SHOT_ATTEMPTS:
                     chartElements.append(datapoint)
