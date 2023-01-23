@@ -20,20 +20,20 @@ from matplotlib.patches import PathPatch
 # Global settings - Set to False if you do not want to display certain visual elements
 SHOW_GOALS = True
 SHOW_SHOTS_ON_GOAL = True
-SHOW_SHOT_ATTEMPTS = False
+SHOW_SHOT_ATTEMPTS = True
 
 # Charts and graphs
 GOAL_COLOR = "#4bad53"
-GOAL_MARKER_SIZE = 13
-GOAL_MARKER_TYPE = 'd'
+GOAL_MARKER_SIZE = 20
+GOAL_MARKER_TYPE = '*'
 
 SHOT_ON_GOAL_COLOR = "#f0a911"
-SHOT_ON_GOAL_MARKER_SIZE = 9
+SHOT_ON_GOAL_MARKER_SIZE = 10
 SHOT_ON_GOAL_MARKER_TYPE = 'o'
 
 SHOT_ATTEMPT_COLOR = "#000000"
-SHOT_ATTEMPT_MARKER_SIZE = 7
-SHOT_ATTEMPT_MARKER_TYPE = 'x'
+SHOT_ATTEMPT_MARKER_SIZE = 10
+SHOT_ATTEMPT_MARKER_TYPE = '^'
 
 OUTPUT_SEPARATOR = "\n\n*****\n\n"
 OUTPUT_SHOT_CHART_DIRECTORY_AND_FILENAME_PREFIX = './images/shot-chart-'
