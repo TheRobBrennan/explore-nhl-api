@@ -23,17 +23,17 @@ SHOW_SHOTS_ON_GOAL = True
 SHOW_SHOT_ATTEMPTS = False
 
 # Charts and graphs
-GOAL_CHARACTER = 'd'
 GOAL_COLOR = "#4bad53"
 GOAL_MARKER_SIZE = 13
+GOAL_MARKER_TYPE = 'd'
 
-SHOT_ON_GOAL_CHARACTER = 'o'
 SHOT_ON_GOAL_COLOR = "#f0a911"
 SHOT_ON_GOAL_MARKER_SIZE = 9
+SHOT_ON_GOAL_MARKER_TYPE = 'o'
 
-SHOT_ATTEMPT_CHARACTER = 'x'
 SHOT_ATTEMPT_COLOR = "#000000"
 SHOT_ATTEMPT_MARKER_SIZE = 7
+SHOT_ATTEMPT_MARKER_TYPE = 'x'
 
 OUTPUT_SEPARATOR = "\n\n*****\n\n"
 OUTPUT_SHOT_CHART_DIRECTORY_AND_FILENAME_PREFIX = './images/shot-chart-'
@@ -132,7 +132,7 @@ def generate_shot_chart_for_game(gameId):
     # Plot our elements on the chart
     elements = data['game']['charts']['shotChart']['data']
     for e in elements:
-        plt.plot(e['x_calculated_shot_chart'], e['y_calculated_shot_chart'], e['char'], color=e['color'],
+        plt.plot(e['x_calculated_shot_chart'], e['y_calculated_shot_chart'], e['markertype'], color=e['color'],
                  markersize=int(e['markersize']))
 
     # Add title
@@ -314,7 +314,7 @@ def parse_game_details(gameId):
                         datapoint['y'] = y
                         datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
                         datapoint['y_calculated_shot_chart'] = y_calculated_shot_chart
-                        datapoint['char'] = GOAL_CHARACTER
+                        datapoint['markertype'] = GOAL_MARKER_TYPE
                         datapoint['color'] = GOAL_COLOR
                         datapoint['markersize'] = GOAL_MARKER_SIZE
 
@@ -326,7 +326,7 @@ def parse_game_details(gameId):
                     datapoint['y'] = y
                     datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
                     datapoint['y_calculated_shot_chart'] = y_calculated_shot_chart
-                    datapoint['char'] = GOAL_CHARACTER
+                    datapoint['markertype'] = GOAL_MARKER_TYPE
                     datapoint['color'] = GOAL_COLOR
                     datapoint['markersize'] = GOAL_MARKER_SIZE
 
@@ -341,7 +341,7 @@ def parse_game_details(gameId):
                 datapoint['y'] = y
                 datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
                 datapoint['y_calculated_shot_chart'] = y_calculated_shot_chart
-                datapoint['char'] = SHOT_ON_GOAL_CHARACTER
+                datapoint['markertype'] = SHOT_ON_GOAL_MARKER_TYPE
                 datapoint['color'] = SHOT_ON_GOAL_COLOR
                 datapoint['markersize'] = SHOT_ON_GOAL_MARKER_SIZE
 
@@ -356,7 +356,7 @@ def parse_game_details(gameId):
                 datapoint['y'] = y
                 datapoint['x_calculated_shot_chart'] = x_calculated_shot_chart
                 datapoint['y_calculated_shot_chart'] = y_calculated_shot_chart
-                datapoint['char'] = SHOT_ATTEMPT_CHARACTER
+                datapoint['markertype'] = SHOT_ATTEMPT_MARKER_TYPE
                 datapoint['color'] = SHOT_ATTEMPT_COLOR
                 datapoint['markersize'] = SHOT_ATTEMPT_MARKER_SIZE
 
