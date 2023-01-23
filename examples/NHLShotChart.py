@@ -179,6 +179,7 @@ def load_schedule_for_season_and_team(season, teamId):
         "/schedule?season=" + str(season) + \
         "&teamId=" + str(teamId)
     season_schedule = requests.get(NHL_API_SCHEDULE_URL).json()
+    printJSON(season_schedule, 1)
     return season_schedule
 
 
@@ -193,6 +194,7 @@ def load_schedule_for_team_with_start_and_end_dates(teamId, startDate, endDate, 
         "&teamId=" + str(teamId) + \
         "&hydrate=" + hydrateCSVString
     partial_schedule = requests.get(NHL_API_PARTIAL_SCHEDULE_URL).json()
+    printJSON(partial_schedule, 1)
     return partial_schedule
 
 
