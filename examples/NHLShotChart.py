@@ -56,10 +56,10 @@ NHL_TEAM_ID_SEATTLE_KRAKEN = 55
 # NHL_GAME_ID = 2022020711  # 2023.01.17 => SEA @ EDM - https://www.nhl.com/gamecenter/sea-vs-edm/2023/01/17/2022020711#game=2022020711,game_state=final,lock_state=final,game_tab=stats
 # Expected 31 SOG for SEA / 33 SOG for EDM; actual data from the NHL API shows 31 SOG for SEA / 34 SOG for EDM - EDM wins 5-2
 
-# NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA - https://www.nhl.com/gamecenter/njd-vs-sea/2023/01/19/2022020728/recap/stats#game=2022020728,game_state=final,lock_state=final,game_tab=stats
+NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA - https://www.nhl.com/gamecenter/njd-vs-sea/2023/01/19/2022020728/recap/stats#game=2022020728,game_state=final,lock_state=final,game_tab=stats
 # Expected 30 SOG for NJD / 40 SOG for SEA - SEA wins 4-3 in OT
 
-NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA - https://www.nhl.com/gamecenter/col-vs-sea/2023/01/21/2022020743/recap/stats#game=2022020743,game_state=final,lock_state=final,game_tab=stats
+# NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA - https://www.nhl.com/gamecenter/col-vs-sea/2023/01/21/2022020743/recap/stats#game=2022020743,game_state=final,lock_state=final,game_tab=stats
 # Expected 27 SOG for COL / 27 SOG for SEA - COL wins 2-1 in SO
 
 
