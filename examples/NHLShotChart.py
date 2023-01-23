@@ -261,6 +261,7 @@ def parse_game_details(gameId):
 
         if eventDescription == "Goal" or eventDescription == "Shot" or eventDescription == "Missed Shot":
             datapoint = dict()
+            eventDetails = event["about"]
 
             # Which team fired this shot?
             team_info = event["team"]
@@ -316,6 +317,7 @@ def parse_game_details(gameId):
                         datapoint['markertype'] = GOAL_MARKER_TYPE
                         datapoint['color'] = GOAL_COLOR
                         datapoint['markersize'] = GOAL_MARKER_SIZE
+                        datapoint['event_details'] = eventDetails
 
                         if SHOW_GOALS:
                             chartElements.append(datapoint)
@@ -328,6 +330,7 @@ def parse_game_details(gameId):
                     datapoint['markertype'] = GOAL_MARKER_TYPE
                     datapoint['color'] = GOAL_COLOR
                     datapoint['markersize'] = GOAL_MARKER_SIZE
+                    datapoint['event_details'] = eventDetails
 
                     if SHOW_GOALS:
                         chartElements.append(datapoint)
@@ -343,6 +346,7 @@ def parse_game_details(gameId):
                 datapoint['markertype'] = SHOT_ON_GOAL_MARKER_TYPE
                 datapoint['color'] = SHOT_ON_GOAL_COLOR
                 datapoint['markersize'] = SHOT_ON_GOAL_MARKER_SIZE
+                datapoint['event_details'] = eventDetails
 
                 if SHOW_SHOTS_ON_GOAL:
                     chartElements.append(datapoint)
@@ -358,6 +362,7 @@ def parse_game_details(gameId):
                 datapoint['markertype'] = SHOT_ATTEMPT_MARKER_TYPE
                 datapoint['color'] = SHOT_ATTEMPT_COLOR
                 datapoint['markersize'] = SHOT_ATTEMPT_MARKER_SIZE
+                datapoint['event_details'] = eventDetails
 
                 if SHOW_SHOT_ATTEMPTS:
                     chartElements.append(datapoint)
