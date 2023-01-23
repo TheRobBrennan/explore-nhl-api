@@ -21,6 +21,7 @@ from matplotlib.patches import PathPatch
 SHOW_GOALS = True
 SHOW_SHOTS_ON_GOAL = True
 SHOW_SHOT_ATTEMPTS = True
+SHOW_SHOT_ATTEMPTS_ANNOTATION = False
 
 # Charts and graphs
 GOAL_COLOR = "#4bad53"
@@ -28,12 +29,12 @@ GOAL_MARKER_SIZE = 20
 GOAL_MARKER_TYPE = '*'
 
 SHOT_ON_GOAL_COLOR = "#f0a911"
-SHOT_ON_GOAL_MARKER_SIZE = 10
+SHOT_ON_GOAL_MARKER_SIZE = 7
 SHOT_ON_GOAL_MARKER_TYPE = 'o'
 
 SHOT_ATTEMPT_COLOR = "#000000"
-SHOT_ATTEMPT_MARKER_SIZE = 10
-SHOT_ATTEMPT_MARKER_TYPE = '^'
+SHOT_ATTEMPT_MARKER_SIZE = 7
+SHOT_ATTEMPT_MARKER_TYPE = 'x'
 
 OUTPUT_SEPARATOR = "\n\n*****\n\n"
 OUTPUT_SHOT_CHART_DIRECTORY_AND_FILENAME_PREFIX = './images/shot-chart-'
@@ -143,6 +144,10 @@ def generate_shot_chart_for_game(gameId):
 
         plt.plot(e['x_calculated_shot_chart'], e['y_calculated_shot_chart'], e['markertype'], color=e['color'],
                  markersize=int(e['markersize']))
+
+        if SHOW_SHOT_ATTEMPTS_ANNOTATION:
+            plt.text(e['x_calculated_shot_chart']-1.2, e['y_calculated_shot_chart']-1, e['shot_attempts'], horizontalalignment='left',
+                     size='medium', color='black', weight='normal')
 
     # Add title
     plt.title(title)
@@ -330,6 +335,11 @@ def parse_game_details(gameId):
                         datapoint['event_details'] = eventDetails
                         datapoint['team'] = team
 
+                        if isHomeTeam:
+                            datapoint['shot_attempts'] = home_shot_attempts
+                        else:
+                            datapoint['shot_attempts'] = away_shot_attempts
+
                         if SHOW_GOALS:
                             chartElements.append(datapoint)
 
@@ -344,6 +354,11 @@ def parse_game_details(gameId):
                     datapoint['markersize'] = GOAL_MARKER_SIZE
                     datapoint['event_details'] = eventDetails
                     datapoint['team'] = team
+
+                    if isHomeTeam:
+                        datapoint['shot_attempts'] = home_shot_attempts
+                    else:
+                        datapoint['shot_attempts'] = away_shot_attempts
 
                     if SHOW_GOALS:
                         chartElements.append(datapoint)
@@ -363,6 +378,11 @@ def parse_game_details(gameId):
                 datapoint['event_details'] = eventDetails
                 datapoint['team'] = team
 
+                if isHomeTeam:
+                    datapoint['shot_attempts'] = home_shot_attempts
+                else:
+                    datapoint['shot_attempts'] = away_shot_attempts
+
                 if SHOW_SHOTS_ON_GOAL:
                     chartElements.append(datapoint)
             else:
@@ -380,6 +400,11 @@ def parse_game_details(gameId):
                 datapoint['markersize'] = SHOT_ATTEMPT_MARKER_SIZE
                 datapoint['event_details'] = eventDetails
                 datapoint['team'] = team
+
+                if isHomeTeam:
+                    datapoint['shot_attempts'] = home_shot_attempts
+                else:
+                    datapoint['shot_attempts'] = away_shot_attempts
 
                 if SHOW_SHOT_ATTEMPTS:
                     chartElements.append(datapoint)
