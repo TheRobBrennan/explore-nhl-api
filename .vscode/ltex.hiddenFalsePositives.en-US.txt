@@ -1,0 +1,1 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qimages/shot-chart-2022020711-2023-01-17_6:00pm-SEA-vs-EDM.png\\E$"}
