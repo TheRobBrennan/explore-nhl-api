@@ -451,16 +451,17 @@ def parse_game_details(gameId):
 
     return response
 
+
 # ------------------------------------------------------------------------------------------------
 # Examples
 # ------------------------------------------------------------------------------------------------
 # # - Load the Seattle Kraken schedule for the 2022-23 season
-# load_schedule_for_season_and_team(NHL_SEASON, NHL_TEAM_ID)
+# load_schedule_for_season_and_team(NHL_SEASON, NHL_TEAM_ID_SEATTLE_KRAKEN)
 # ------------------------------------------------------------------------------------------------
 # # - Load a subset of Seattle Kraken games and hydrate our response with additional details
 # hydrateWithCSVString = "team,linescore,metadata,seriesSummary(series)"
 # load_schedule_for_team_with_start_and_end_dates(
-#     NHL_TEAM_ID, START_DATE, END_DATE, hydrateWithCSVString)
+#     NHL_TEAM_ID_SEATTLE_KRAKEN, START_DATE, END_DATE, hydrateWithCSVString)
 # ------------------------------------------------------------------------------------------------
 # Load live data for the game held on 2023.01.19 between the New Jersey Devils and Seattle Kraken
 # content = load_live_data_for_game(NHL_GAME_ID)
