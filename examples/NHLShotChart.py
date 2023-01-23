@@ -155,7 +155,6 @@ def load_live_data_for_game(gameId):
     NHL_API_LIVE_GAME_DATA_URL = NHL_API_BASE_URL + \
         "/game/" + str(gameId) + "/feed/live"
     live_data = requests.get(NHL_API_LIVE_GAME_DATA_URL).json()
-    # printJSON(live_data, 1)
     return live_data
 
 
@@ -165,8 +164,8 @@ def load_schedule_for_season_and_team(season, teamId):
     NHL_API_SCHEDULE_URL = NHL_API_BASE_URL + \
         "/schedule?season=" + str(season) + \
         "&teamId=" + str(teamId)
-    kraken_schedule = requests.get(NHL_API_SCHEDULE_URL).json()
-    # printJSON(kraken_schedule, 1)
+    season_schedule = requests.get(NHL_API_SCHEDULE_URL).json()
+    return season_schedule
 
 
 # Load schedule data using a specified start and end date for a specific team ID with an optional hydrate CSV string from the NHL API
@@ -179,8 +178,8 @@ def load_schedule_for_team_with_start_and_end_dates(teamId, startDate, endDate, 
         "&endDate=" + endDate + \
         "&teamId=" + str(teamId) + \
         "&hydrate=" + hydrateCSVString
-    kraken_partial_schedule = requests.get(NHL_API_PARTIAL_SCHEDULE_URL).json()
-    # printJSON(kraken_partial_schedule, 1)
+    partial_schedule = requests.get(NHL_API_PARTIAL_SCHEDULE_URL).json()
+    return partial_schedule
 
 
 def parse_game_details(gameId):
