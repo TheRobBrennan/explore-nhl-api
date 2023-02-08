@@ -62,8 +62,12 @@ NHL_TEAM_ID_SEATTLE_KRAKEN = 55
 # NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA - https://www.nhl.com/gamecenter/col-vs-sea/2023/01/21/2022020743/recap/stats#game=2022020743,game_state=final,lock_state=final,game_tab=stats
 # Expected 27 SOG for COL / 27 SOG for SEA - COL wins 2-1 in SO
 
-NHL_GAME_ID = 2022020770  # 2023.01.25 => VAN @ SEA - https://www.nhl.com/gamecenter/van-vs-sea/2023/01/25/2022020770/ice-tracker/plays#game=2022020770,game_state=live,lock_state=live,game_tab=plays
+# NHL_GAME_ID = 2022020770  # 2023.01.25 => VAN @ SEA - https://www.nhl.com/gamecenter/van-vs-sea/2023/01/25/2022020770/ice-tracker/plays#game=2022020770,game_state=live,lock_state=live,game_tab=plays
 # Expected 20 SOG for VAN / 35 SOG for SEA - SEA wins 6-1
+
+# 2023.02.07 => SEA @ NYI - https://www.nhl.com/gamecenter/sea-vs-nyi/2023/02/07/2022020816#game=2022020816
+NHL_GAME_ID = 2022020816
+# Expected 32 SOG for SEA / 28 SOG for NYI - NYI wins 4-0
 
 
 # Utility method to convert an API datetime string to a local format
@@ -294,6 +298,14 @@ def parse_game_details(gameId):
 
             # Where did this event take place?
             coords = (event["coordinates"])
+
+            # Fix bug where "Shot" event type was received in the data without any coordinates
+            if 'x' not in coords:
+                continue
+
+            if 'y' not in coords:
+                continue
+
             x = int(coords["x"])
             y = int(coords["y"])
 
