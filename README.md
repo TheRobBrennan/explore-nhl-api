@@ -49,12 +49,4 @@ That's it! Now, if you re-run the program - with or without the debugger - your 
 
 The example Python script at `examples/NHLShotChart.py` will allow you to generate charts using a game ID from the NHL API to see where players either had a goal or a shot on goal. You can optionally enable displaying all shot attempts, as well.
 
-![images/shot-chart-2022020816-2023-02-07_4:30pm-SEA-vs-NYI.png](images/shot-chart-2022020816-2023-02-07_4:30pm-SEA-vs-NYI.png)
-
-![images/shot-chart-2022020770-2023-01-25_7:00pm-VAN-vs-SEA.png](images/shot-chart-2022020770-2023-01-25_7:00pm-VAN-vs-SEA.png)
-
-![images/shot-chart-2022020743-2023-01-21_7:00pm-COL-vs-SEA.png](images/shot-chart-2022020743-2023-01-21_7:00pm-COL-vs-SEA.png)
-
-![images/shot-chart-2022020728-2023-01-19_7:00pm-NJD-vs-SEA.png](images/shot-chart-2022020728-2023-01-19_7:00pm-NJD-vs-SEA.png)
-
-![images/shot-chart-2022020711-2023-01-17_6:00pm-SEA-vs-EDM.png](images/shot-chart-2022020711-2023-01-17_6:00pm-SEA-vs-EDM.png)
+![images/shot-chart-2022020824-2023-02-09_4:00pm-SEA-vs-NJD.png](images/shot-chart-2022020824-2023-02-09_4:00pm-SEA-vs-NJD.png)
