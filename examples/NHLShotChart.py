@@ -323,11 +323,6 @@ def parse_game_details(gameId):
                         # FUTURE - Should isShotAttempt be set to False here? 🤔
                         isShotAttempt = True
 
-                    # Empty net considerations
-                    empty_net = result["emptyNet"]
-                    if empty_net != False:
-                        continue
-                    else:
                         datapoint['event_description'] = eventDescription
                         datapoint['x'] = x
                         datapoint['y'] = y
