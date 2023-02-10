@@ -102,14 +102,14 @@ def generate_shot_chart_for_game(gameId):
     home_shot_attempts = result['homeShotAttempts']
 
     # Build our title
-    title_line1 = away_team + " (" + str(away_goals) + ")" + \
-        " vs. " + home_team + " (" + str(home_goals) + ")" + "\n"
+    title_line0 = str(away_goals) + " - " + str(home_goals) + "\n"
+    title_line1 = away_team + " vs. " + home_team + "\n"
     title_line2 = gameStartLocalDateTime + "\n"
     title_line3 = gameStatus + "\n\n"
     title_line4 = away_team + " - " + str(away_sog) + " SOG (" + str(away_shot_attempts) + " Total Shot Attempts)\n" + \
         home_team + " - " + str(home_sog) + " SOG (" + \
         str(home_shot_attempts) + " Total Shot Attempts)"
-    title = title_line1 + title_line2 + title_line3 + title_line4
+    title = title_line0 + title_line1 + title_line2 + title_line3 + title_line4
     # --------------------------------------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------------------------------------
