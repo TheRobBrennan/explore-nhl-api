@@ -52,23 +52,6 @@ NHL_API_DATE_TIME_FORMAT_STRING = "%Y-%m-%dT%H:%M:%SZ"  # '2023-01-20T03:00:00Z'
 NHL_SEASON = 20222023
 NHL_TEAM_ID_SEATTLE_KRAKEN = 55
 
-# Known issue where home shots on goal do not match expected 33 shots (from NHL link below)
-# NHL_GAME_ID = 2022020711  # 2023.01.17 => SEA @ EDM - https://www.nhl.com/gamecenter/sea-vs-edm/2023/01/17/2022020711#game=2022020711,game_state=final,lock_state=final,game_tab=stats
-# Expected 31 SOG for SEA / 33 SOG for EDM; actual data from the NHL API shows 31 SOG for SEA / 34 SOG for EDM - EDM wins 5-2
-
-# NHL_GAME_ID = 2022020728  # 2023.01.19 => NJD @ SEA - https://www.nhl.com/gamecenter/njd-vs-sea/2023/01/19/2022020728/recap/stats#game=2022020728,game_state=final,lock_state=final,game_tab=stats
-# Expected 30 SOG for NJD / 40 SOG for SEA - SEA wins 4-3 in OT
-
-# NHL_GAME_ID = 2022020743  # 2023.01.21 => COL @ SEA - https://www.nhl.com/gamecenter/col-vs-sea/2023/01/21/2022020743/recap/stats#game=2022020743,game_state=final,lock_state=final,game_tab=stats
-# Expected 27 SOG for COL / 27 SOG for SEA - COL wins 2-1 in SO
-
-# NHL_GAME_ID = 2022020770  # 2023.01.25 => VAN @ SEA - https://www.nhl.com/gamecenter/van-vs-sea/2023/01/25/2022020770/ice-tracker/plays#game=2022020770,game_state=live,lock_state=live,game_tab=plays
-# Expected 20 SOG for VAN / 35 SOG for SEA - SEA wins 6-1
-
-# 2023.02.07 => SEA @ NYI - https://www.nhl.com/gamecenter/sea-vs-nyi/2023/02/07/2022020816#game=2022020816
-# NHL_GAME_ID = 2022020816
-# Expected 32 SOG for SEA / 28 SOG for NYI - NYI wins 4-0
-
 # 2023.02.09 => SEA @ NJD - https://www.nhl.com/gamecenter/sea-vs-njd/2023/02/09/2022020824#game=2022020824,game_state=live
 NHL_GAME_ID = 2022020824
 
