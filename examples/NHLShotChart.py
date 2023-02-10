@@ -66,8 +66,11 @@ NHL_TEAM_ID_SEATTLE_KRAKEN = 55
 # Expected 20 SOG for VAN / 35 SOG for SEA - SEA wins 6-1
 
 # 2023.02.07 => SEA @ NYI - https://www.nhl.com/gamecenter/sea-vs-nyi/2023/02/07/2022020816#game=2022020816
-NHL_GAME_ID = 2022020816
+# NHL_GAME_ID = 2022020816
 # Expected 32 SOG for SEA / 28 SOG for NYI - NYI wins 4-0
+
+# 2023.02.09 => SEA @ NJD - https://www.nhl.com/gamecenter/sea-vs-njd/2023/02/09/2022020824#game=2022020824,game_state=live
+NHL_GAME_ID = 2022020824
 
 
 # Utility method to convert an API datetime string to a local format
